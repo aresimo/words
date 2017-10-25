@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      Add a random word
+    </div>
+    <div class="d-flex align-items-center">
+      <button class="btn btn-primary" type="button" (click)="addWord()">Add</button>
+    </div>
+  </div>
+</div><!-- card end -->
+<app-search (filterString)="searchStringChanged($event)"></app-search>
+<app-display-table
+  [wordsTablePaginated]="wordsTablePaginated$"
+  (translateAction)="translate($event)"
+  (deleteAction)="deleteWord($event)"
+  (changedAction)="wordChanged($event)">
+</app-display-table>
+<pagination [totalItems]="((wordsTable$ | async)).length"
+  [(ngModel)]="currentPage" (pageChanged)="changeCurrentPage($event)" [pageSize]="pageSize"></pagination>

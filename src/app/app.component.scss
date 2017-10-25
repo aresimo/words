@@ -1,0 +1,37 @@
+.grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+  'header header header'
+  'main main main'
+  'footer footer footer';
+  grid-template-columns: 100px auto 100px;
+  grid-template-rows: 50px auto 50px;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 960px;
+  min-width: 640px;
+}
+
+.header {
+  display: grid;
+  grid-area: header;
+  grid-template-areas: 'logo navigation';
+  grid-template-columns: 25% 75%;
+}
+
+.navigation {
+  grid-area: navigation;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}

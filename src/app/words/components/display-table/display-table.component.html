@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">
+    Words table
+  </div>
+  <div class="card-block">
+    <table class="table table-striped no-margin-bottom table-vertical-middle">
+      <thead>
+        <tr>
+          <th class="id">id</th>
+          <th class="word">Word</th>
+          <th>Translation</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let word of ((wordsTablePaginated | async))">
+          <tr *ngIf="word === -1">
+            <td colspan="4" class="text-center">
+              Table is empty
+            </td>
+          </tr>
+          <tr *ngIf="word !== -1">
+            <td>{{ word.id }}</td>
+            <td>
+              <app-display-edit [isEdit]="isEdited(word.id)" [wordValue]="word.word" [wordId]="word.id"
+                (changedWordValue)="changed($event)"></app-display-edit>
+            </td>
+            <td>{{ word.translation }}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="translate(word.id, word.word)">Translate</button>
+              <button type="button" class="btn btn-primary" (click)="edit(word.id)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="delete(word.id)">Delete</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div><!-- card end -->

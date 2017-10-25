@@ -1,0 +1,9 @@
+export const GET_WORD = 'GET_WORD';
+export const GET_WORD_SUCCESS = 'GET_WORD_SUCCESS';
+export const GET_WORD_ERROR = 'GET_WORD_ERROR';
+export const DELETE_WORD = 'DELETE_WORD';
+export const EDIT_WORD = 'EDIT_WORD';
+export const CLEAR_DATA = 'CLEAR_DATA';
+export const TRANSLATE_WORD = 'TRANSLATE_WORD';
+export const TRANSLATE_WORD_ERROR = 'TRANSLATE_WORD_ERROR';
+export const TRANSLATE_WORD_SUCCESS = 'TRANSLATE_WORD_SUCCESS';
