@@ -5,10 +5,6 @@ import { AppComponent } from './app.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
-  const mockHttpWrapper = {
-    setBaseUrl: jasmine.createSpy('setBaseUrl'),
-    setHeader: jasmine.createSpy('setHeader'),
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

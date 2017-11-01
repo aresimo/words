@@ -17,18 +17,17 @@
   border-radius: 50%;
   color: $clear-color;
   cursor: pointer;
-  font-size: 14px;
   height: 20px;
   line-height: 18px;
   position: absolute;
   right: 10px;
   text-align: center;
-  top: 9px;
-  transition: background-color 300ms ease-in-out;
+  top: 6px;
+  transition: background-color $transition-time ease-in-out;
   width: 20px;
 
   &:hover {
     background-color: $clear-background-hover;
-    transition: background-color 300ms ease-in-out;
+    transition: background-color $transition-time ease-in-out;
   }
 }

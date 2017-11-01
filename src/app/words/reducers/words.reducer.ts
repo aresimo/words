@@ -10,7 +10,7 @@ import {
   TRANSLATE_WORD_SUCCESS,
 } from './../actions/words.actions';
 import { ActionReducer, Action } from '@ngrx/store';
-import {   WordsActions, WordState } from './../interfaces/words.interfaces';
+import { WordsActions, WordState } from './../interfaces/words.interfaces';
 
 const initialState: WordState = {
   isPending: false,

@@ -1,4 +1,3 @@
-import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -10,7 +9,7 @@ describe('DisplayEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule, HttpModule ],
+      imports: [ ReactiveFormsModule ],
       declarations: [ DisplayEditComponent ],
       schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],
     })

@@ -1,0 +1,17 @@
+@import '../../../assets/scss/variables';
+
+.logo {
+  padding-top: 8px;
+
+  a {
+    font-weight: 700;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    transition: all $transition-time ease-in-out;
+
+    &:hover {
+      text-decoration: none;
+      transition: all $transition-time ease-in-out;
+    }
+  }
+}

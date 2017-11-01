@@ -1,6 +1,3 @@
-import { WordFilterPipe } from './../../../pipes/word-filter.pipe';
-import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from '../../actions/words.actions';
-import { AppState } from './../../../app.module';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
@@ -9,13 +6,18 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/debounceTime';
+
+import { WordFilterPipe } from './../pipes/word-filter.pipe';
+import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from './actions/words.actions';
+import { AppState } from './../app.module';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  selector: 'app-words',
+  templateUrl: './words.component.html',
+  styleUrls: ['./words.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class WordsComponent implements OnInit {
 
   public wordsTable$: any;
   public wordsTablePaginated$: any;
@@ -77,6 +79,7 @@ export class TableComponent implements OnInit {
     return this.store.select('words')
       .pluck('model')
       .switchMap(value => this.searchObs$
-      .map(item => this.wordFilter.transform(value, 'word', item)));
+        .map(item => this.wordFilter.transform(value, 'word', item),
+      ));
   }
 }

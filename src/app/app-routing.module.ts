@@ -1,5 +1,5 @@
-import { ConfigComponent } from './words/components/config/config.component';
-import { TableComponent } from './words/components/table/table.component';
+import { ConfigComponent } from './config/config.component';
+import { WordsComponent } from './words/words.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'words',
-    component: TableComponent,
+    component: WordsComponent,
   },
   {
     path: 'config',

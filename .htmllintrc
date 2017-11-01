@@ -1,8 +1,10 @@
 {
   "plugins": [],
+  "doctype-first": false,
   "indent-width": 2,
   "class-style": "dash",
   "attr-name-style": false,
+  "attr-lowercase": false,
   "tag-bans": ["style", "b"],
   "img-req-src": false,
   "spec-char-escape": false,

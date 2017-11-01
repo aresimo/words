@@ -1,0 +1,16 @@
+@import '../../../assets/scss/variables';
+
+.active {
+  color: $menu-color-active;
+  transition: all $transition-time ease-in-out;
+}
+
+a {
+  color: $menu-color;
+  transition: all $transition-time ease-in-out;
+
+  &:hover {
+    color: $menu-color-active;
+    transition: all $transition-time ease-in-out;
+  }
+}
