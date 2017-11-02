@@ -21,7 +21,7 @@ describe('WordsComponent', () => {
   let component: WordsComponent;
   let fixture: ComponentFixture<WordsComponent>;
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ WordsComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
@@ -35,9 +35,9 @@ describe('WordsComponent', () => {
     fixture = TestBed.createComponent(WordsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
-  it('should be created', (): void => {
+  it('should be created', async((): void => {
     expect(component).toBeTruthy();
-  });
+  }));
 });

@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 import { WordFilterPipe } from './../pipes/word-filter.pipe';
 import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from './actions/words.actions';
@@ -27,6 +28,7 @@ export class WordsComponent implements OnInit {
   public searchInput = '';
   private searchObs$: any;
   private paginationObs$: any;
+  public totalItems = 0;
 
   constructor(private store: Store<AppState>, private wordFilter: WordFilterPipe) {}
 
@@ -35,6 +37,7 @@ export class WordsComponent implements OnInit {
     this.searchObs$ = new BehaviorSubject('');
     this.wordsTable$ = this.initWordTable;
     this.wordsTablePaginated$ = this.initWordPaginateTable;
+    this.setTotalItems();
   }
 
   public changeCurrentPage(page) {
@@ -79,7 +82,14 @@ export class WordsComponent implements OnInit {
     return this.store.select('words')
       .pluck('model')
       .switchMap(value => this.searchObs$
+        .debounceTime(500)
         .map(item => this.wordFilter.transform(value, 'word', item),
       ));
+  }
+
+  private setTotalItems(): void {
+    this.wordsTable$
+      .map(item => item.length)
+      .subscribe(numberOfItems => this.totalItems = numberOfItems);
   }
 }

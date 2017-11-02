@@ -32,7 +32,7 @@ export interface FetchWordError extends Action {
 }
 
 export interface TranslateWord extends Action {
-  payload?: any;
+  payload?: null;
 }
 
 export interface TranslateWordSuccess extends Action {

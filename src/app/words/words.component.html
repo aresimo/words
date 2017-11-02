@@ -15,5 +15,6 @@
   (deleteAction)="deleteWord($event)"
   (changedAction)="wordChanged($event)">
 </app-display-table>
-<pagination [totalItems]="((wordsTable$ | async)).length"
-  [(ngModel)]="currentPage" (pageChanged)="changeCurrentPage($event)" [pageSize]="pageSize"></pagination>
+<pagination [totalItems]="totalItems"
+  [(ngModel)]="currentPage" (pageChanged)="changeCurrentPage($event)" [pageSize]="pageSize">
+</pagination>
