@@ -1,4 +1,4 @@
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -43,7 +43,7 @@ export interface AppState {
     BrowserModule,
     EffectsModule.forRoot([WordsEffects]),
     AppRoutingModule,
-    HttpModule,
+    HttpClientModule,
     ConfigModule,
     WordsModule,
     StoreModule.forRoot(
