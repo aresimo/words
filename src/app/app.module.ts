@@ -5,7 +5,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule, ActionReducer, ActionReducerMap } from '@ngrx/store';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import 'rxjs/add/operator/mapTo';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { TranslateApiService } from './services/translate-api.service';
