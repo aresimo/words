@@ -8,10 +8,12 @@ export class TranslateApiService {
 
   constructor(private http: Http) { }
 
-  public translate(wordToTranslate: string, language: string): Observable<any> {
+  public translate(wordToTranslate: string, language: string, translateOptions: any): Observable<any> {
     const apiKey = environment.translateApiKey;
     const url = environment.translateUrl;
-    const options = { params: `key=${apiKey}&text=${wordToTranslate}&lang=${language}&format=plain` };
+    const options = {
+      params: `key=${apiKey}&text=${wordToTranslate}&lang=${language}&format=plain&options=${translateOptions}`,
+    };
     return this.http.get(url, options);
   }
 }

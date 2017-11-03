@@ -26,7 +26,7 @@ export class WordsEffects {
 
   @Effect() translateWord$: Observable<WordsActions> = this.actions$
     .ofType<WordsActions>(TRANSLATE_WORD)
-    .switchMap(action => this.translateApiService.translate(action.payload.word, 'en-pl')
+    .switchMap(action => this.translateApiService.translate(action.payload.word, 'en-pl', 0)
       .map(response => ({ id: action.payload.wordId, translation: (response.json()).text[0] }))
       .map(word => ({ type: TRANSLATE_WORD_SUCCESS, payload: word }))
       .catch(err => Observable.of({ type: TRANSLATE_WORD_ERROR, payload: err.json() })),
