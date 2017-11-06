@@ -1,5 +1,5 @@
-import { ConfigComponent } from './config/config.component';
-import { WordsComponent } from './words/words.component';
+import { ConfigComponent } from './modules/config/config.component';
+import { WordsComponent } from './modules/words/words.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

@@ -1,5 +1,5 @@
-import { TranslateApiService } from './../../services/translate-api.service';
-import { WordsApiService } from './../../services/words-api.service';
+import { TranslateApiService } from './../../../services/translate-api.service';
+import { WordsApiService } from './../../../services/words-api.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/';
 import { Action } from '@ngrx/store';
@@ -10,8 +10,8 @@ import {
   GET_WORD_ERROR,
   TRANSLATE_WORD,
   TRANSLATE_WORD_SUCCESS,
-  TRANSLATE_WORD_ERROR } from './../actions/words.actions';
-import { WordsActions } from './../interfaces/words.interfaces';
+  TRANSLATE_WORD_ERROR } from './../store/words.actions';
+import { WordsActions } from './../store/words.interfaces';
 
 @Injectable()
 export class WordsEffects {

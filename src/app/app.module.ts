@@ -8,18 +8,18 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { TranslateApiService } from './services/translate-api.service';
-import { WordsEffects } from './words/effects/words.effects';
+import { WordsEffects } from './modules/words/store/words.effects';
 import { WordsApiService } from './services/words-api.service';
-import { WordsModule } from './words/words.module';
-import { ConfigModule } from './config/config.module';
+import { WordsModule } from './modules/words/words.module';
+import { ConfigModule } from './modules/config/config.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
-import { wordsReducer } from './words/reducers/words.reducer';
-import { GET_WORD, GET_WORD_SUCCESS } from './words/actions/words.actions';
-import { Word } from './words/interfaces/words.interfaces';
+import { wordsReducer } from './modules/words/store/words.reducer';
+import { GET_WORD, GET_WORD_SUCCESS } from './modules/words/store/words.actions';
+import { Word } from './modules/words/store/words.interfaces';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: ['words'], rehydrate: true })(reducer);

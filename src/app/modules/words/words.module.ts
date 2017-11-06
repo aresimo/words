@@ -1,4 +1,4 @@
-import { WordFilterPipe } from './../pipes/word-filter.pipe';
+import { WordFilterPipe } from './../../pipes/word-filter.pipe';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WordsComponent } from './words.component';

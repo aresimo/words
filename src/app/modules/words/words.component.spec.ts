@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { WordsComponent } from './words.component';
-import { TranslateApiService } from './../services/translate-api.service';
-import { WordsApiService } from './../services/words-api.service';
-import { WordFilterPipe } from './../pipes/word-filter.pipe';
+import { TranslateApiService } from './../../services/translate-api.service';
+import { WordsApiService } from './../../services/words-api.service';
+import { WordFilterPipe } from './../../pipes/word-filter.pipe';
 
 const mockStore = {
   select: () => Observable.of({ model: [ { word: 'lorem ipsum dolor sit amet' } ] }),

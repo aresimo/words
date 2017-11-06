@@ -2,16 +2,10 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/pluck';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
 
-import { WordFilterPipe } from './../pipes/word-filter.pipe';
-import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from './actions/words.actions';
-import { AppState } from './../app.module';
+import { WordFilterPipe } from './../../pipes/word-filter.pipe';
+import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from './store/words.actions';
+import { AppState } from './../../app.module';
 
 @Component({
   selector: 'app-words',

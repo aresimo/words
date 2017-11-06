@@ -8,9 +8,9 @@ import {
   TRANSLATE_WORD,
   TRANSLATE_WORD_ERROR,
   TRANSLATE_WORD_SUCCESS,
-} from './../actions/words.actions';
+} from './words.actions';
 import { ActionReducer, Action } from '@ngrx/store';
-import { WordsActions, WordState } from './../interfaces/words.interfaces';
+import { WordsActions, WordState } from './words.interfaces';
 
 const initialState: WordState = {
   isPending: false,
