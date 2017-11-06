@@ -8,7 +8,7 @@
     </div>
   </div>
 </div><!-- card end -->
-<app-search (filterString)="searchStringChanged($event)"></app-search>
+<app-filter (filterString)="searchStringChanged($event)"></app-filter>
 <app-display-table
   [wordsTablePaginated]="wordsTablePaginated$"
   (translateAction)="translate($event)"

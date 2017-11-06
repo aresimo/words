@@ -5,7 +5,7 @@ import { WordsComponent } from './words.component';
 import { DisplayEditComponent } from './components/display-edit/display-edit.component';
 import { DisplayTableComponent } from './components/display-table/display-table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from './components/search/search.component';
+import { FilterComponent } from './components/filter/filter.component';
 import { PaginationModule } from 'ngx-bootstrap';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { PaginationModule } from 'ngx-bootstrap';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [ WordsComponent, DisplayEditComponent, SearchComponent, DisplayTableComponent ],
+  declarations: [ WordsComponent, DisplayEditComponent, FilterComponent, DisplayTableComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   providers: [ WordFilterPipe ],
 })

@@ -2,11 +2,11 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  selector: 'app-filter',
+  templateUrl: './filter.component.html',
+  styleUrls: ['./filter.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class FilterComponent implements OnInit {
 
   @Output() filterString: EventEmitter<any> = new EventEmitter();
 
