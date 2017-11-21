@@ -44,6 +44,8 @@ export class ClearData implements Action {
 
 export class TranslateWord implements Action {
   readonly type = TRANSLATE_WORD;
+
+  constructor(public payload: any) {}
 }
 
 export class TranslateWordError implements Action {
@@ -58,7 +60,7 @@ export class TranslateWordSuccess implements Action {
   constructor(public payload: any) {}
 }
 
-export type All =
+export type WordsActions =
   GetWord | GetWordSuccess | GetWordError
   | DeleteWord | EditWord | ClearData
   | TranslateWord | TranslateWordError | TranslateWordSuccess;

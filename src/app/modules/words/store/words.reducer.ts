@@ -10,7 +10,7 @@ const initialState: WordState = {
   model: [],
 };
 
-export function wordsReducer(state = initialState, action: wordsActions.All): WordState {
+export function wordsReducer(state = initialState, action: wordsActions.WordsActions): WordState {
 
   switch (action.type) {
     case wordsActions.GET_WORD: {
@@ -23,6 +23,7 @@ export function wordsReducer(state = initialState, action: wordsActions.All): Wo
     }
 
     case wordsActions.GET_WORD_SUCCESS: {
+      console.log(action.payload, 'action payload get word success');
       return {
         isPending: false,
         isSuccess: true,

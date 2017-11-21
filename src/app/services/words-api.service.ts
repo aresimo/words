@@ -8,7 +8,7 @@ export class WordsApiService {
 
   constructor(private http: HttpClient) {}
 
-  public get word(): Observable<any> {
+  public word(): Observable<any> {
     const apiKey = environment.wordsApiKey;
     const url = environment.wordsApiUrl;
     let params = new HttpParams();
