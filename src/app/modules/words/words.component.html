@@ -9,12 +9,12 @@
   </div>
 </div><!-- card end -->
 <app-filter (filterString)="searchStringChanged($event)"></app-filter>
-<app-display-table
+<app-table
   [wordsTablePaginated]="wordsTablePaginated$"
   (translateAction)="translate($event)"
   (deleteAction)="deleteWord($event)"
   (changedAction)="wordChanged($event)">
-</app-display-table>
+</app-table>
 <pagination [totalItems]="totalItems"
   [(ngModel)]="currentPage" (pageChanged)="changeCurrentPage($event)" [pageSize]="pageSize">
 </pagination>

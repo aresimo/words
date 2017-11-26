@@ -22,8 +22,8 @@
           <tr *ngIf="word !== -1">
             <td>{{ word.id }}</td>
             <td>
-              <app-display-edit [isEdit]="isEdited(word.id)" [wordValue]="word.word" [wordId]="word.id"
-                (changedWordValue)="changed($event)"></app-display-edit>
+              <app-edit [isEdit]="isEdited(word.id)" [wordValue]="word.word" [wordId]="word.id"
+                (changedWordValue)="changed($event)"></app-edit>
             </td>
             <td>{{ word.translation }}</td>
             <td>

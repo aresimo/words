@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnChanges } 
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-display-edit',
-  templateUrl: './display-edit.component.html',
-  styleUrls: ['./display-edit.component.scss'],
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss'],
 })
-export class DisplayEditComponent implements OnInit, OnChanges {
+export class EditComponent implements OnInit, OnChanges {
 
   @Input() wordValue = '';
   @Input() wordId = null;

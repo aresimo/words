@@ -2,11 +2,11 @@ import { Observable } from 'rxjs/Rx';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-display-table',
-  templateUrl: './display-table.component.html',
-  styleUrls: [ './display-table.component.scss' ],
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: [ './table.component.scss' ],
 })
-export class DisplayTableComponent implements OnInit {
+export class TableComponent implements OnInit {
 
   @Input() wordsTablePaginated: Observable<any>;
   @Output() translateAction: EventEmitter<any> = new EventEmitter();

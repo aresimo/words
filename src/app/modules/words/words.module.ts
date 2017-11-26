@@ -2,8 +2,8 @@ import { WordFilterPipe } from './../../pipes/word-filter.pipe';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WordsComponent } from './words.component';
-import { DisplayEditComponent } from './components/display-edit/display-edit.component';
-import { DisplayTableComponent } from './components/display-table/display-table.component';
+import { EditComponent } from './components/edit/edit.component';
+import { TableComponent } from './components/table/table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterComponent } from './components/filter/filter.component';
 import { PaginationModule } from 'ngx-bootstrap';
@@ -15,7 +15,7 @@ import { PaginationModule } from 'ngx-bootstrap';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [ WordsComponent, DisplayEditComponent, FilterComponent, DisplayTableComponent ],
+  declarations: [ WordsComponent, EditComponent, FilterComponent, TableComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   providers: [ WordFilterPipe ],
 })
