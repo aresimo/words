@@ -1,7 +1,7 @@
 import { wordsReducer } from './words.reducer';
 import {
-  GET_WORD_ERROR,
   GET_WORD,
+  GET_WORD_ERROR,
   GET_WORD_SUCCESS,
   DELETE_WORD,
   EDIT_WORD,
@@ -10,10 +10,138 @@ import {
   TRANSLATE_WORD_ERROR,
   TRANSLATE_WORD_SUCCESS,
 } from './../store/words.actions';
+import { WordState } from './words.interfaces';
+
+
+const mockInitialState: WordState = {
+  isPending: false,
+  isSuccess: false,
+  isError: false,
+  model: [],
+};
+
+const mockWordState = {
+  isPending: false,
+  isError: false,
+  isSuccess: false,
+  model: [
+    {
+      id: 98176,
+      word: 'pedagogics',
+      translation: 'pedagogika',
+    },
+    {
+      id: 1762154,
+      word: 'dirtbike',
+      translation: 'motor',
+    },
+    {
+      id: 12121212,
+      word: 'space',
+    },
+  ],
+};
+
+const mockGetWordSuccessPayload = {
+  id: 47998, word: 'destroyer',
+};
+
+const mockGetWordSuccess = {
+  isPending: false,
+  isSuccess: true,
+  isError: false,
+  model: [
+    { id: 47998,
+      word: 'destroyer',
+    },
+    {
+      id: 98176,
+      word: 'pedagogics',
+      translation: 'pedagogika',
+    },
+    {
+      id: 1762154,
+      word: 'dirtbike',
+      translation: 'motor',
+    },
+    {
+      id: 12121212,
+      word: 'space',
+    },
+  ],
+};
 
 describe('Words reducers', () => {
 
-  it('should handle initial state', (): void => {
-    expect(true).toBeTruthy();
+  describe('when action is dispatched', () => {
+
+    it('should handle [Words] Get word', (): void => {
+      const getWordReducer = wordsReducer(mockWordState, { type: GET_WORD });
+      const isPending = getWordReducer.isPending === true;
+      expect(isPending).toBeTruthy();
+    });
+
+    it('should handle [Words] Get word success', (): void => {
+      const getWordReducer = wordsReducer(
+        mockWordState,
+        { type: GET_WORD_SUCCESS, payload: mockGetWordSuccessPayload },
+      );
+      const isSuccess = getWordReducer.isSuccess;
+      expect(isSuccess).toBeTruthy();
+      expect(getWordReducer).toEqual(mockGetWordSuccess);
+    });
+
+    it('should handle [Words] Get word error', (): void => {
+      const getWordErrorReducer = wordsReducer(mockInitialState, { type: GET_WORD_ERROR, payload: {} });
+      const isError = getWordErrorReducer.isError;
+      expect(isError).toBeTruthy();
+    });
+
+    it('should handle [Words] Delete word', (): void => {
+      const getDeleteWordReducer = wordsReducer(
+        mockWordState, { type: DELETE_WORD, payload: 98176 }).model.length;
+      expect(getDeleteWordReducer).toEqual(2);
+    });
+
+    it('should handle [Words] Edit word', (): void => {
+      const getEditWordReducer = wordsReducer(
+        mockWordState, { type: EDIT_WORD, payload: { id: 98176, word: 'plane' } },
+      );
+      const isEdited = getEditWordReducer.model[0].word === 'plane' && getEditWordReducer.model[0].translation === '';
+      expect(isEdited).toBeTruthy();
+    });
+
+    it('should handle [Words] Clear data', (): void => {
+      const getClearWordReducer = wordsReducer(
+        mockWordState, { type: CLEAR_DATA },
+      );
+      expect(getClearWordReducer).toEqual(mockInitialState);
+    });
+
+    it('should handle [Words] Translate word', (): void => {
+      const getTranslateWordReducer = wordsReducer(
+        mockWordState, { type: TRANSLATE_WORD, payload: { id: 12121212, word: 'space' } },
+      );
+      const isPending = getTranslateWordReducer.isPending === true;
+      expect(isPending).toBeTruthy();
+    });
+
+    it('should handle [Words] Translate word error', (): void => {
+      const getTranslateWordErrorReducer = wordsReducer(
+        mockWordState, { type: TRANSLATE_WORD_ERROR, payload: {} },
+      );
+      const isError = getTranslateWordErrorReducer.isError;
+      expect(isError).toBeTruthy();
+    });
+
+    it('should handle [Words] Translate word success', (): void => {
+      const getTranslateWordSuccessReducer = wordsReducer(
+        mockWordState, { type: TRANSLATE_WORD_SUCCESS, payload: { id: 12121212, translation: 'kosmos' } },
+      );
+      const isSuccess = getTranslateWordSuccessReducer.isSuccess;
+      const isTranslated = getTranslateWordSuccessReducer.model[2].translation === 'kosmos';
+      expect(isSuccess).toBeTruthy();
+      expect(isTranslated).toBeTruthy();
+    });
   });
 });

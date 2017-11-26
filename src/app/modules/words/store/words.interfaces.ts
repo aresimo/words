@@ -9,6 +9,7 @@ export interface Word {
   translation?: string;
   id: number;
 }
+
 export interface WordState {
   isPending: boolean;
   isSuccess: boolean;

@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 import { WordFilterPipe } from './../../pipes/word-filter.pipe';
 import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from './store/words.actions';

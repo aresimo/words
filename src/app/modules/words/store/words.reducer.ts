@@ -23,7 +23,6 @@ export function wordsReducer(state = initialState, action: wordsActions.WordsAct
     }
 
     case wordsActions.GET_WORD_SUCCESS: {
-      console.log(action.payload, 'action payload get word success');
       return {
         isPending: false,
         isSuccess: true,
@@ -92,7 +91,7 @@ export function wordsReducer(state = initialState, action: wordsActions.WordsAct
       return {
         isPending: false,
         isError: false,
-        isSuccess: false,
+        isSuccess: true,
         model: newModel,
       };
     }
