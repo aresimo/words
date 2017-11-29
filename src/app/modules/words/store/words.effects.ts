@@ -12,17 +12,19 @@ import * as WordsActions from './words.actions';
 export class WordsEffects {
   @Effect() getWord$: Observable<WordsAction> = this.actions$
     .ofType<WordsAction>(WordsActions.GET_WORD)
-    .switchMap(() => this.wordsApiService.word())
-    .map(data => new WordsActions.GetWordSuccess(data))
-    .catch(error => Observable.of(new WordsActions.GetWordError(error)),
-    );
+    .switchMap(() => this.wordsApiService.word()
+      .map(data => new WordsActions.GetWordSuccess(data))
+      .catch(error => Observable.of(new WordsActions.GetWordError(error)),
+    ));
 
   @Effect() translateWord$: Observable<WordsAction> = this.actions$
     .ofType<WordsAction>(WordsActions.TRANSLATE_WORD)
     .switchMap(action => this.translateApiService.translate(action.payload.word, 'en-pl', 0)
-      .map(response => ({ id: action.payload.wordId, translation: response.text[0] })))
-    .map(word => new WordsActions.TranslateWordSuccess(word))
-    .catch(error => Observable.of(new WordsActions.TranslateWordError(error)));
+      .map(response => ({ id: action.payload.wordId, translation: response.text[0] }))
+        .map(word => new WordsActions.TranslateWordSuccess(word))
+        .catch(error => Observable.of(new WordsActions.TranslateWordError(error))),
+    );
+
 
   private wordId: string;
 

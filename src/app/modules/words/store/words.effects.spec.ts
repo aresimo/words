@@ -83,7 +83,7 @@ describe('Words effects', () => {
       const completion = new WordsActions.GetWordError('error message');
 
       actions = hot('--a-', { a: action });
-      const expected = cold('--(b|)', { b: completion });
+      const expected = cold('--b', { b: completion });
 
       expect(effects.getWord$).toBeObservable(expected);
       expect(mockWordsApiService.word).toHaveBeenCalled();
@@ -114,7 +114,7 @@ describe('Words effects', () => {
       const completion = new WordsActions.TranslateWordError('error message');
 
       actions = hot('--a-', { a: action });
-      const expected = cold('--(b|)', { b: completion });
+      const expected = cold('--b', { b: completion });
 
       expect(effects.translateWord$).toBeObservable(expected);
       expect(mockTranslateApiService.translate).toHaveBeenCalled();
