@@ -6,16 +6,18 @@ import { Observable } from 'rxjs/';
 @Injectable()
 export class TranslateApiService {
 
+  public apiKey = environment.translateApiKey;
+  public url = environment.translateUrl;
+
   constructor(private http: HttpClient) { }
 
   public translate(wordToTranslate: string, language: string, translateOptions: any): Observable<any> {
-    const apiKey = environment.translateApiKey;
-    const url = environment.translateUrl;
+
     let params = new HttpParams();
-    params = params.append('key', apiKey);
+    params = params.append('key', this.apiKey);
     params = params.append('text', wordToTranslate);
     params = params.append('lang', language);
     params = params.append('options', translateOptions);
-    return this.http.get(url, { params });
+    return this.http.get(this.url, { params });
   }
 }

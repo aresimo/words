@@ -25,7 +25,6 @@ export class WordsEffects {
         .catch(error => Observable.of(new WordsActions.TranslateWordError(error))),
     );
 
-
   private wordId: string;
 
   constructor(
