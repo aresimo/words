@@ -1,7 +1,8 @@
-import { CLEAR_DATA } from './../words/store/words.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { AppState } from './../../app.module';
+import { CLEAR_DATA } from './../words/store/words.actions';
 
 @Component({
   selector: 'app-config',
