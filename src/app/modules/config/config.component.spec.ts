@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Store, StateObservable } from '@ngrx/store';
+import { By } from '@angular/platform-browser';
 
 import { ConfigComponent } from './config.component';
 import { CLEAR_DATA } from './../words/store/words.actions';
@@ -31,7 +32,7 @@ describe('ConfigComponent', () => {
   });
 
   it('should dispatch CLEAR_DATA action after click on clear button', () => {
-    const button = fixture.debugElement.nativeElement.querySelector('button').click();
+    fixture.debugElement.query(By.css('button')).triggerEventHandler('click', new Event('click'));
     expect(mockStore.dispatch).toHaveBeenCalledWith({ type: CLEAR_DATA });
   });
 });

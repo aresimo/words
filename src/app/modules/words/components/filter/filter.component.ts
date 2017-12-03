@@ -23,7 +23,7 @@ export class FilterComponent implements OnInit {
     this.filterString.emit(this.filterInput.value);
   }
 
-  public searchInputHandler() {
+  public filterInputHandler() {
     this.filterString.emit(this.filterInput.value);
   }
 }
