@@ -43,4 +43,8 @@ export class TableComponent implements OnInit {
     this.isEdit = null;
     this.changedAction.emit(event);
   }
+
+  public trackByFn(index, item) {
+    return item.id;
+  }
 }

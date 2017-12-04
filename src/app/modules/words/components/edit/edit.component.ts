@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -22,8 +22,8 @@ export class EditComponent implements OnInit, OnChanges {
     this.wordInput = new FormControl(this.wordValue);
   }
 
-  public ngOnChanges(changes) {
-    if (changes.isEdit.currentValue) {
+  public ngOnChanges(changes: SimpleChanges) {
+    if (!!changes.isEdit && changes.isEdit.currentValue) {
       setTimeout(() => this.wordInputElement.nativeElement.focus(), 250);
     } else {
       this.isEdit = false;
