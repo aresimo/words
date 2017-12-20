@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 
 const expectedValue = { id: '123', word: 'Test' };
 
-fdescribe('EditComponent', () => {
+describe('EditComponent', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 
@@ -85,16 +85,17 @@ fdescribe('EditComponent', () => {
     tick();
     component.isEdit = false;
     fixture.detectChanges();
-    const doesItDisplayWord = fixture.debugElement.query(By.css('.wordValue')).nativeElement.textContent;
+    const doesItDisplayWord = fixture.debugElement.query(By.css('.word-value')).nativeElement.textContent;
     expect(doesItDisplayWord).toEqual('lorem ipsum');
   }));
 
-  it('should display wordValue after save button click', () => {
+  it('should display wordValue after save button click', fakeAsync(() => {
     fixture.debugElement.query(By.css('.save-word')).triggerEventHandler('click', new Event('click'));
+    tick();
     component.isEdit = false;
     fixture.detectChanges();
-    const doesItDisplayWord = fixture.debugElement.query(By.css('.wordValue')).nativeElement.textContent;
+    const doesItDisplayWord = fixture.debugElement.query(By.css('.word-value')).nativeElement.textContent;
     expect(doesItDisplayWord).toEqual('lorem ipsum');
-  });
+  }));
 
 });
