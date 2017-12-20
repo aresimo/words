@@ -13,7 +13,7 @@ export class TableComponent implements OnInit {
   @Output() deleteAction: EventEmitter<any> = new EventEmitter();
   @Output() changedAction: EventEmitter<any> = new EventEmitter();
 
-  public isEdit: number = null;
+  public isEdit: any = false;
 
   constructor() {}
 

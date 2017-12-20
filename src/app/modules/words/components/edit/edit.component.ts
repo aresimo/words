@@ -23,8 +23,10 @@ export class EditComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges) {
-    if (!!changes.isEdit && changes.isEdit.currentValue) {
-      setTimeout(() => this.wordInputElement.nativeElement.focus(), 250);
+    if (changes.isEdit && changes.isEdit.currentValue) {
+      if (this.wordInputElement) {
+        setTimeout(() => this.wordInputElement.nativeElement.focus(), 250);
+      }
     } else {
       this.isEdit = false;
     }
@@ -36,7 +38,7 @@ export class EditComponent implements OnInit, OnChanges {
   }
 
   public saveOnEnter(event): void {
-    if (event.keyCode === 13) {
+    if (event.key === 'Enter') {
       this.saveWord();
     }
   }

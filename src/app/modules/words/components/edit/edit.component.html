@@ -1,5 +1,5 @@
 <ng-container *ngIf="!isEdit">
-  {{ wordValue }}
+  <span class="word-value">{{ wordValue }}</span>
 </ng-container>
 <ng-container *ngIf="isEdit">
   <div class="container-fluid">
@@ -8,12 +8,12 @@
         <div class="form-group no-margin-bottom make-relative">
           <div class="clear" (click)="clearField($event)">x</div>
           <input #word type="text" class="form-control padding-right" [formControl]="wordInput"
-            id="word" placeholder="Enter word" (keydown)="saveOnEnter($event)"
+            id="word" name="word" placeholder="Enter word" (keydown)="saveOnEnter($event)"
           />
         </div>
       </div>
       <div class="col-4">
-        <button class="btn btn-primary" (click)="saveWord()">Save</button>
+        <button class="btn btn-primary save-word" (click)="saveWord()">Save</button>
       </div>
     </div>
   </div>
