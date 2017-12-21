@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -12,6 +12,7 @@ import { AppState } from './../../app.module';
   selector: 'app-words',
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WordsComponent implements OnInit {
 
