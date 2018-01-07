@@ -27,9 +27,10 @@
             </td>
             <td>{{ word.translation }}</td>
             <td>
-              <button type="button" class="btn btn-success" (click)="translate(word.id, word.word)">Translate</button>
-              <button type="button" class="btn btn-primary" (click)="edit(word.id)">Edit</button>
-              <button type="button" class="btn btn-danger" (click)="delete(word.id)">Delete</button>
+              <button type="button" class="btn btn-success translate-button"
+                (click)="translate(word.id, word.word)">Translate</button>
+              <button type="button" class="btn btn-primary edit-button" (click)="edit(word.id)">Edit</button>
+              <button type="button" class="btn btn-danger delete-button" (click)="delete(word.id)">Delete</button>
             </td>
           </tr>
         </ng-container>

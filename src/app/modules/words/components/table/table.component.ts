@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
   styleUrls: [ './table.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
 
   @Input() wordsTablePaginated: Observable<any>;
   @Output() translateAction: EventEmitter<any> = new EventEmitter();
@@ -17,8 +17,6 @@ export class TableComponent implements OnInit {
   public isEdit: any = false;
 
   constructor() {}
-
-  ngOnInit() {}
 
   public translate(wordIdData: string, wordData: string) {
     const objectToSend = {
