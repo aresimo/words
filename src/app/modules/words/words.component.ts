@@ -16,15 +16,16 @@ import { AppState } from './../../app.module';
 })
 export class WordsComponent implements OnInit {
 
-  public wordsTable$: any;
   public wordsTablePaginated$: any;
   public currentPage = 1;
   public collectionSize: number;
   public pageSize = 10;
   public searchInput = '';
+  public totalItems = 0;
+
   private searchObs$: any;
   private paginationObs$: any;
-  public totalItems = 0;
+  private wordsTable$: any;
 
   constructor(private store: Store<AppState>, private wordFilter: WordFilterPipe) {}
 
