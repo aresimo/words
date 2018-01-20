@@ -77,8 +77,7 @@ describe('Words reducers', () => {
 
     it('should handle [Words] Get word', (): void => {
       const getWordReducer = wordsReducer(mockWordState, { type: GET_WORD });
-      const isPending = getWordReducer.isPending === true;
-      expect(isPending).toBeTruthy();
+      expect(getWordReducer.isPending).toBeTruthy();
     });
 
     it('should handle [Words] Get word success', (): void => {
