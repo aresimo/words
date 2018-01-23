@@ -105,24 +105,22 @@ describe('TableComponent', () => {
     expect(tableInfo).toContain('Table is empty');
   });
 
-  it('should output translate action after translate button click', fakeAsync(() => {
+  it('should output translate action after translate button click', () => {
     fixture.debugElement.query(By.css('.translate-button')).triggerEventHandler('click', new Event('click'));
-    tick();
+    fixture.detectChanges();
     expect(component.translate).toEqual(epxectedTranslate);
-  }));
+  });
 
-  it('should output changed action after edit button click', fakeAsync(() => {
+  it('should output changed action after edit button click', () => {
     fixture.debugElement.query(By.css('.edit-button')).triggerEventHandler('click', new Event('click'));
-    tick();
     fixture.detectChanges();
     expect(component.changed).toEqual('lorem ipsum');
-  }));
+  });
 
-  it('should output delete action after delete button click', fakeAsync(() => {
+  it('should output delete action after delete button click', () => {
     component.wordsTable.next(wordsTableInputMock);
-    fixture.detectChanges();
     fixture.debugElement.query(By.css('.delete-button')).triggerEventHandler('click', new Event('click'));
-    tick();
+    fixture.detectChanges();
     expect(component.delete).toEqual(expectedDelete);
-  }));
+  });
 });

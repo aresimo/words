@@ -14,7 +14,7 @@ describe('EditComponent', () => {
     template: `<app-edit (changedWordValue)="getOutput($event)"
       wordValue='lorem ipsum'
       wordId='123'
-      [isEdit]=isEdit
+      [isEdit]='isEdit'
       ></app-edit>`,
   })
   class TestHostComponent {
@@ -48,6 +48,7 @@ describe('EditComponent', () => {
 
   it('should clear input on click on clear button', () => {
     fixture.debugElement.query(By.css('.clear')).triggerEventHandler('click', new Event('click'));
+    fixture.detectChanges();
     const fixtureValue = component.editComponent.wordInput.value;
     expect(fixtureValue).toEqual('');
   });
@@ -79,23 +80,20 @@ describe('EditComponent', () => {
     expect(fixture.debugElement.query(By.css('#word'))).toBeTruthy();
   });
 
-  it('should display wordValue after enter key', fakeAsync(() => {
+  it('should display wordValue after enter key', () => {
     fixture.debugElement.query(By.css('#word'))
       .triggerEventHandler('keydown', new KeyboardEvent('keydown', { key: 'Enter' }));
-    tick();
     component.isEdit = false;
     fixture.detectChanges();
     const doesItDisplayWord = fixture.debugElement.query(By.css('.word-value')).nativeElement.textContent;
     expect(doesItDisplayWord).toEqual('lorem ipsum');
-  }));
+  });
 
-  it('should display wordValue after save button click', fakeAsync(() => {
+  it('should display wordValue after save button click', () => {
     fixture.debugElement.query(By.css('.save-word')).triggerEventHandler('click', new Event('click'));
-    tick();
     component.isEdit = false;
     fixture.detectChanges();
     const doesItDisplayWord = fixture.debugElement.query(By.css('.word-value')).nativeElement.textContent;
     expect(doesItDisplayWord).toEqual('lorem ipsum');
-  }));
-
+  });
 });
