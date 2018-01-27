@@ -10,6 +10,9 @@ import * as WordsActions from './words.actions';
 
 @Injectable()
 export class WordsEffects {
+
+  private wordId: string;
+
   @Effect() getWord$: Observable<WordsAction> = this.actions$
     .ofType<WordsAction>(WordsActions.GET_WORD)
     .switchMap(() => this.wordsApiService.word()
@@ -24,8 +27,6 @@ export class WordsEffects {
         .map(word => new WordsActions.TranslateWordSuccess(word))
         .catch(error => Observable.of(new WordsActions.TranslateWordError(error))),
     );
-
-  private wordId: string;
 
   constructor(
     private actions$: Actions,
