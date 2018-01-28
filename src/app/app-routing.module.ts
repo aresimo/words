@@ -1,26 +1,23 @@
-import { ConfigComponent } from './modules/config/config.component';
-import { WordsComponent } from './modules/words/words.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { WordsComponent } from './modules/words/words.component';
+import { wordsRoutes } from './modules/words/words-routing.module';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     redirectTo: 'words',
+    pathMatch: 'full',
   },
   {
     path: 'words',
-    component: WordsComponent,
-  },
-  {
-    path: 'config',
-    component: ConfigComponent,
+    children: wordsRoutes,
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ],
 })
 export class AppRoutingModule { }
