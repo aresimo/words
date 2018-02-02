@@ -20,6 +20,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { wordsReducer } from './modules/words/store/words.reducer';
 import { GET_WORD, GET_WORD_SUCCESS } from './modules/words/store/words.actions';
 import { Word } from './modules/words/store/words.interfaces';
+import { WordFilterPipe } from './pipes/word-filter.pipe';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: ['words'], rehydrate: true })(reducer);
@@ -37,6 +38,7 @@ export interface AppState {
     MenuComponent,
     FooterComponent,
     LogoComponent,
+    WordFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ export interface AppState {
     StoreDevtoolsModule.instrument(),
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
-  providers: [ WordsApiService, TranslateApiService ],
+  providers: [ WordsApiService, TranslateApiService, WordFilterPipe ],
   bootstrap: [ AppComponent ],
 })
 export class AppModule { }
