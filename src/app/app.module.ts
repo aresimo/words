@@ -12,7 +12,7 @@ import { WordsEffects } from './modules/words/store/words.effects';
 import { WordsApiService } from './services/words-api.service';
 import { WordsModule } from './modules/words/words.module';
 import { ConfigModule } from './modules/config/config.module';
-import { AppRoutingModule } from './app-routing.module';
+import { appRouter } from './app.router';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -43,7 +43,7 @@ export interface AppState {
   imports: [
     BrowserModule,
     EffectsModule.forRoot([WordsEffects]),
-    AppRoutingModule,
+    appRouter,
     HttpClientModule,
     ConfigModule,
     WordsModule,

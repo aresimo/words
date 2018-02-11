@@ -8,8 +8,7 @@ import { WordsComponent } from './words.component';
 import { EditComponent } from './components/edit/edit.component';
 import { TableComponent } from './components/table/table.component';
 import { FilterComponent } from './components/filter/filter.component';
-import { AppRoutingModule } from './../../app-routing.module';
-import { wordsRoutes } from './words-routing.module';
+import { wordsRouter } from './words.router';
 
 @NgModule({
   imports: [
@@ -17,8 +16,7 @@ import { wordsRoutes } from './words-routing.module';
     PaginationModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(wordsRoutes),
-    AppRoutingModule,
+    wordsRouter,
   ],
   declarations: [ WordsComponent, EditComponent, FilterComponent, TableComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
