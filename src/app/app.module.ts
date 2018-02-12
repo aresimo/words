@@ -21,6 +21,7 @@ import { wordsReducer } from './modules/words/store/words.reducer';
 import { GET_WORD, GET_WORD_SUCCESS } from './modules/words/store/words.actions';
 import { Word } from './modules/words/store/words.interfaces';
 import { WordFilterPipe } from './pipes/word-filter.pipe';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: ['words'], rehydrate: true })(reducer);
@@ -39,6 +40,7 @@ export interface AppState {
     FooterComponent,
     LogoComponent,
     WordFilterPipe,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
