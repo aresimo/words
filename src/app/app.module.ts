@@ -17,8 +17,6 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
-import { wordsReducer } from './modules/words/store/words.reducer';
-import { GET_WORD, GET_WORD_SUCCESS } from './modules/words/store/words.actions';
 import { Word } from './modules/words/store/words.interfaces';
 import { WordFilterPipe } from './pipes/word-filter.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -44,15 +42,14 @@ export interface AppState {
   ],
   imports: [
     BrowserModule,
-    EffectsModule.forRoot([WordsEffects]),
     appRouter,
     HttpClientModule,
     ConfigModule,
     WordsModule,
+    EffectsModule.forRoot([]),
     StoreModule.forRoot(
       {
         router: routerReducer,
-        words: wordsReducer,
       },
       {
         metaReducers,
