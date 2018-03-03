@@ -18,7 +18,8 @@ const epxectedTranslate = {
 };
 
 const expectedEdit = {
-
+  id: 2652741,
+  word: 'lorem ipsum',
 };
 
 const expectedDelete = 2652741;
@@ -36,8 +37,6 @@ describe('TableComponent', () => {
     </app-table>`,
   })
   class TestHostComponent {
-    @ViewChild(TableComponent)
-    public tableComponent: TableComponent;
 
     public translate: any;
     public delete: any;
@@ -57,25 +56,9 @@ describe('TableComponent', () => {
     }
   }
 
-  @Component({
-    selector: 'app-edit',
-    template: ``,
-  })
-  class MockEditComponent implements OnChanges {
-
-    @Input() isEdit = false;
-    @Input() wordValue = '';
-    @Input() wordId = null;
-    @Output() changedWordValue: EventEmitter<any> = new EventEmitter();
-
-    public ngOnChanges(changes: SimpleChanges) {
-      this.changedWordValue.emit('lorem ipsum');
-    }
-  }
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestHostComponent, TableComponent, MockEditComponent ],
+      declarations: [ TestHostComponent, TableComponent ],
       schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],
     })
     .compileComponents();
@@ -113,8 +96,10 @@ describe('TableComponent', () => {
 
   it('should output changed action after edit button click', () => {
     fixture.debugElement.query(By.css('.edit-button')).triggerEventHandler('click', new Event('click'));
+    fixture.debugElement.query(By.css('app-edit'))
+      .triggerEventHandler('changedWordValue', expectedEdit);
     fixture.detectChanges();
-    expect(component.changed).toEqual('lorem ipsum');
+    expect(component.changed).toEqual(expectedEdit);
   });
 
   it('should output delete action after delete button click', () => {
