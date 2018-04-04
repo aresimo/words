@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { WordFilterPipe } from './../../pipes/word-filter.pipe';
 import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from './store/words.actions';
-import { AppState } from './../../app.module';
+import { AppState } from './../../interfaces/appState.interface';
 
 @Component({
   selector: 'app-words',

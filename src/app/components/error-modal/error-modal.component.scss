@@ -1,0 +1,22 @@
+@import '../../../assets/scss/variables';
+
+.close {
+  &::after {
+    color: white;
+    content: 'x';
+    font-size: 16px;
+  }
+}
+
+.modal-content {
+  background-color: red;
+  color: white;
+}
+
+.modal-dialog {
+  max-width: 90%;
+}
+
+.modal-body {
+  word-break: break-all;
+}

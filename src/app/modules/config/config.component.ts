@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { AppState } from './../../app.module';
+import { AppState } from './../../interfaces/appState.interface';
 import { CLEAR_DATA } from './../words/store/words.actions';
 
 @Component({

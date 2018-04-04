@@ -1,0 +1,11 @@
+<ng-template #template *ngIf="errorData$ | async as error">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ error.code }} {{ error.codeText }}</h4>
+    <button type="button" class="close pull-right" (click)="closeModal()">
+    </button>
+  </div>
+  <div class="modal-body">
+    {{ error.errorMessage }}
+  </div>
+</ng-template>
+
