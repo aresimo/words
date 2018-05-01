@@ -9,7 +9,7 @@ import {
   TRANSLATE_WORD,
   TRANSLATE_WORD_ERROR,
   TRANSLATE_WORD_SUCCESS,
-} from './../store/words.actions';
+} from './words.actions';
 import { WordState } from './words.interfaces';
 
 

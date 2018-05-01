@@ -1,6 +1,13 @@
 import { CLEAR_ERROR } from './../../store/error.actions';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  ViewEncapsulation,
+  OnDestroy,
+} from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Store } from '@ngrx/store';
@@ -15,40 +22,47 @@ import { AppState } from './../../interfaces/appState.interface';
   styleUrls: ['./error-modal.component.scss'],
 })
 export class ErrorModalComponent implements OnInit, OnDestroy {
+  @ViewChild('template') public templateRef: TemplateRef<any>;
 
   public modalRef: BsModalRef;
-  @ViewChild('template')
-  public templateRef: TemplateRef<any>;
   public isError: Subscription;
   public errorData$: Observable<any>;
 
-  constructor(private modalService: BsModalService, private store: Store<AppState>) { }
+  constructor(
+    private modalService: BsModalService,
+    private store: Store<AppState>,
+  ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.isErrorInit();
     this.errorDataInit();
   }
 
-  private errorDataInit() {
+  public ngOnDestroy() {
+    this.isError.unsubscribe();
+  }
+
+  private errorDataInit(): void {
     this.errorData$ = this.store.select('error').map(state => state.error);
   }
 
   private isErrorInit(): void {
-    this.isError = this.store.select('error').map(state => state.isError).subscribe((errorState: boolean) => {
-      if (errorState) { this.openModal(this.templateRef); }
-    });
+    this.isError = this.store
+      .select('error')
+      .map(state => state.isError)
+      .subscribe((errorState: boolean) => {
+        if (errorState) {
+          this.openModal(this.templateRef);
+        }
+      });
   }
 
-  public openModal(template: TemplateRef<any>) {
+  private openModal(template: TemplateRef<any>): void {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
-  public closeModal() {
-    this.modalRef.hide();
+  public closeModal(): void {
     this.store.dispatch({ type: CLEAR_ERROR });
-  }
-
-  public ngOnDestroy() {
-    this.isError.unsubscribe();
+    this.modalRef.hide();
   }
 }

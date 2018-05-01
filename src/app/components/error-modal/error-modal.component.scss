@@ -2,15 +2,15 @@
 
 .close {
   &::after {
-    color: white;
+    color: $modal-x-button-background;
     content: 'x';
     font-size: 16px;
   }
 }
 
 .modal-content {
-  background-color: red;
-  color: white;
+  background-color: $modal-background;
+  color: $modal-color;
 }
 
 .modal-dialog {

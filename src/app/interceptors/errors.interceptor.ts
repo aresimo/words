@@ -31,21 +31,6 @@ export class ErrorInterceptor implements HttpInterceptor {
       };
       this.store.dispatch({ type: SET_ERROR, payload: payloadError });
       return Observable.throw(err);
-
-      // .do(
-      //   (event) => {
-      //   },
-      //   (err: any) => {
-      //     if (err instanceof HttpErrorResponse) {
-      //       const payloadError = {
-      //         code: err.status,
-      //         codeText: err.statusText,
-      //         errorMessage: err.message,
-      //       };
-      //       this.store.dispatch({ type: SET_ERROR, payload: payloadError });
-      //     }
-      //   },
-      // );
     });
   }
 }

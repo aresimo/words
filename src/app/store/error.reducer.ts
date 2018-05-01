@@ -6,7 +6,7 @@ import * as appActions from './error.actions';
 const initialState: ErrorState = {
   isError: false,
   error: {
-    code: 0,
+    code: null,
     codeText: '',
     errorMessage: '',
   },
