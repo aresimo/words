@@ -121,7 +121,7 @@ describe('Words reducers', () => {
       const getTranslateWordReducer = wordsReducer(
         mockWordState, { type: TRANSLATE_WORD, payload: { id: 12121212, word: 'space' } },
       );
-      const isPending = getTranslateWordReducer.isPending === true;
+      const isPending = getTranslateWordReducer.isPending;
       expect(isPending).toBeTruthy();
     });
 

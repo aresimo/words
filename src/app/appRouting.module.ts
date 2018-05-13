@@ -1,9 +1,10 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-const routes: Routes = [
+const appRoutes: Routes = [
   {
     path: '',
     redirectTo: 'words',
@@ -28,4 +29,10 @@ const routes: Routes = [
   },
 ];
 
-export const appRouter: ModuleWithProviders = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(appRoutes),
+  ],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
