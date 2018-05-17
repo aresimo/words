@@ -1,5 +1,6 @@
 import { CLEAR_ERROR } from './../../store/error.actions';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
 import {
   Component,
   OnInit,
@@ -43,13 +44,13 @@ export class ErrorModalComponent implements OnInit, OnDestroy {
   }
 
   private errorDataInit(): void {
-    this.errorData$ = this.store.select('error').map(state => state.error);
+    this.errorData$ = this.store.select('error').pipe(map(state => state.error));
   }
 
   private isErrorInit(): void {
     this.isError = this.store
       .select('error')
-      .map(state => state.isError)
+      .pipe(map(state => state.isError))
       .subscribe((errorState: boolean) => {
         if (errorState) {
           this.openModal(this.templateRef);

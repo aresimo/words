@@ -30,7 +30,7 @@ describe('TableComponent', () => {
 
   @Component({
     template: `<app-table
-      [wordsTablePaginated]=wordsTable
+      [wordsTablePaginated$]=wordsTable
       (translateAction)='translateAction($event)'
       (deleteAction)='deleteAction($event)'
       (changedAction)='changedAction($event)'>

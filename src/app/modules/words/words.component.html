@@ -10,7 +10,7 @@
 </div><!-- card end -->
 <app-filter (filterString)="searchStringChanged($event)"></app-filter>
 <app-table
-  [wordsTablePaginated]="wordsTablePaginated$"
+  [wordsTablePaginated$]="wordsTablePaginated$"
   (translateAction)="translate($event)"
   (deleteAction)="deleteWord($event)"
   (changedAction)="wordChanged($event)">

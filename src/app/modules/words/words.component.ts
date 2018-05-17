@@ -1,6 +1,12 @@
 import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
+import { of } from 'rxjs/observable/of';
+import { switchMap } from 'rxjs/operators/switchMap';
+import { map } from 'rxjs/operators/map';
+import { filter } from 'rxjs/operators/filter';
+import { pluck } from 'rxjs/operators/pluck';
+import { debounceTime } from 'rxjs/operators/debounceTime';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 
@@ -68,25 +74,29 @@ export class WordsComponent implements OnInit {
 
   private get initWordPaginateTable(): Observable<any> {
     return this.paginationObs$
-      .switchMap(item => this.wordsTable$)
-      .filter(Boolean)
-      .map(table => table.slice(
-        (this.currentPage - 1) * this.pageSize,
-        (this.currentPage) * this.pageSize));
+    .pipe(
+      switchMap(item => this.wordsTable$),
+      filter(Boolean),
+      map((table: [{}]) => {
+        return table.slice(
+          (this.currentPage - 1) * this.pageSize,
+          (this.currentPage) * this.pageSize);
+      }));
   }
 
   private get initWordTable(): Observable<any> {
     return this.store.select('words')
-      .pluck('model')
-      .switchMap(value => this.searchObs$
-        .debounceTime(500)
-        .map(item => this.wordFilter.transform(value, 'word', item),
-      ));
+    .pipe(
+      pluck('model'),
+      switchMap(value => this.searchObs$.pipe(
+        debounceTime(500),
+        map((item: string) => this.wordFilter.transform(value, 'word', item)),
+      )));
   }
 
   private setTotalItems(): void {
     this.wordsTable$
-      .map(item => item.length)
-      .subscribe(numberOfItems => this.totalItems = numberOfItems);
+    .pipe(map((item: [{}]) => item.length))
+    .subscribe(numberOfItems => this.totalItems = numberOfItems);
   }
 }

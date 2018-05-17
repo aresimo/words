@@ -1,6 +1,7 @@
 import { CLEAR_ERROR } from './../../store/error.actions';
 import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Rx';
+import { of } from 'rxjs/observable/of';
 import { Store } from '@ngrx/store';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {
@@ -33,7 +34,7 @@ const mockModalService = {
 const mockStore = {
   select: jasmine
     .createSpy('select')
-    .and.returnValue(Observable.of(mockStoreData)),
+    .and.returnValue(of(mockStoreData)),
   dispatch: jasmine.createSpy('dispatch'),
 };
 

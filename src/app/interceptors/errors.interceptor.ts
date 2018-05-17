@@ -9,6 +9,8 @@ import {
 } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
+import { catchError } from 'rxjs/operators/catchError';
+import { _throw } from 'rxjs/observable/throw';
 
 import { AppState } from '../interfaces/appState.interface';
 import { SET_ERROR } from './../store/error.actions';
@@ -22,15 +24,17 @@ export class ErrorInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
-    return next.handle(request).catch((err) => {
-      console.log(err, 'error');
-      const payloadError = {
-        code: err.status,
-        codeText: err.statusText,
-        errorMessage: err.message,
-      };
-      this.store.dispatch({ type: SET_ERROR, payload: payloadError });
-      return Observable.throw(err);
-    });
+    return next.handle(request)
+    .pipe(
+      catchError((err) => {
+        console.log(err, 'error');
+        const payloadError = {
+          code: err.status,
+          codeText: err.statusText,
+          errorMessage: err.message,
+        };
+        this.store.dispatch({ type: SET_ERROR, payload: payloadError });
+        return _throw(err);
+      }));
   }
 }

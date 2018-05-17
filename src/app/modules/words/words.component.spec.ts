@@ -4,6 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs/observable/of';
 
 import { WordsComponent } from './words.component';
 import { TranslateApiService } from './../../services/translate-api.service';
@@ -47,11 +48,11 @@ const expectedData = [
 ];
 
 const mockWordsApiService = {
-  word: () => Observable.of([{}]),
+  word: () => of([{}]),
 };
 
 const mockStore = {
-  select: jasmine.createSpy('select').and.returnValue(Observable.of(mockStoreData)),
+  select: jasmine.createSpy('select').and.returnValue(of(mockStoreData)),
   dispatch: jasmine.createSpy('dispatch'),
 };
 

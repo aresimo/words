@@ -9,7 +9,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 })
 export class TableComponent {
 
-  @Input() wordsTablePaginated: Observable<any>;
+  @Input() wordsTablePaginated$: Observable<any>;
   @Output() translateAction: EventEmitter<any> = new EventEmitter();
   @Output() deleteAction: EventEmitter<any> = new EventEmitter();
   @Output() changedAction: EventEmitter<any> = new EventEmitter();
