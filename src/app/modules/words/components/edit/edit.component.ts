@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild,
-  OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+  OnChanges, SimpleChanges, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ export class EditComponent implements OnInit, OnChanges {
   @Input() wordId = null;
   @Input() isEdit = false;
   @Output() changedWordValue: EventEmitter<any> = new EventEmitter<any>(true);
-  @ViewChild('word') wordInputElement: any;
+  @ViewChild('word') wordInputElement: ElementRef;
 
   public wordInput: FormControl;
 
@@ -35,17 +35,16 @@ export class EditComponent implements OnInit, OnChanges {
   }
 
   public saveWord(): void {
-    const objectToSend = { id: this.wordId, word: this.wordInput.value };
-    this.changedWordValue.emit(objectToSend);
+    this.changedWordValue.emit({ id: this.wordId, word: this.wordInput.value });
   }
 
-  public saveOnEnter(event): void {
+  public saveOnEnter(event: any): void {
     if (event.key === 'Enter') {
       this.saveWord();
     }
   }
 
-  public clearField(event) {
+  public clearField(): void {
     this.wordInput.reset('');
     this.wordInputElement.nativeElement.focus();
   }

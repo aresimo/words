@@ -148,7 +148,7 @@ describe('WordsComponent', () => {
   });
 
   it('should set searchInput property after pageChanged event', (): void => {
-    component.changeCurrentPage({ page: 2 });
+    component.changeCurrentPage({ itemsPerPage: 1, page: 2 });
     expect(component.currentPage).toEqual(2);
   });
 

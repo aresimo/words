@@ -1,4 +1,10 @@
-import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import { of } from 'rxjs/observable/of';
@@ -9,10 +15,19 @@ import { pluck } from 'rxjs/operators/pluck';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
 import { WordFilterPipe } from './../../pipes/word-filter.pipe';
-import { GET_WORD, DELETE_WORD, EDIT_WORD, TRANSLATE_WORD } from './store/words.actions';
+import {
+  GET_WORD,
+  DELETE_WORD,
+  EDIT_WORD,
+  TRANSLATE_WORD,
+} from './store/words.actions';
 import { AppState } from './../../interfaces/appState.interface';
+import { WordTablePaginated } from './interfaces/wordTablePaginated.interface';
+import { WordTableRow } from './interfaces/wordTableRow.interface';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination/pagination.component';
 
 @Component({
   selector: 'app-words',
@@ -20,20 +35,23 @@ import { AppState } from './../../interfaces/appState.interface';
   styleUrls: ['./words.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WordsComponent implements OnInit {
-
-  public wordsTablePaginated$: any;
+export class WordsComponent implements OnInit, OnDestroy {
+  public wordsTablePaginated$: Observable<WordTableRow[]>;
   public currentPage = 1;
   public collectionSize: number;
   public pageSize = 10;
   public searchInput = '';
   public totalItems = 0;
 
-  private searchObs$: any;
-  private paginationObs$: any;
-  private wordsTable$: any;
+  private searchObs$: Subject<string>;
+  private paginationObs$: Subject<number>;
+  private wordsTable$: Observable<WordTablePaginated>;
+  private subscription: Subscription;
 
-  constructor(private store: Store<AppState>, private wordFilter: WordFilterPipe) {}
+  constructor(
+    private store: Store<AppState>,
+    private wordFilter: WordFilterPipe,
+  ) {}
 
   public ngOnInit() {
     this.paginationObs$ = new BehaviorSubject(1);
@@ -43,7 +61,11 @@ export class WordsComponent implements OnInit {
     this.setTotalItems();
   }
 
-  public changeCurrentPage(page) {
+  public ngOnDestroy () {
+    this.subscription.unsubscribe();
+  }
+
+  public changeCurrentPage(page: PageChangedEvent) {
     this.currentPage = page.page;
     this.paginationObs$.next();
   }
@@ -72,31 +94,40 @@ export class WordsComponent implements OnInit {
       : this.store.dispatch({ type: EDIT_WORD, payload: word });
   }
 
-  private get initWordPaginateTable(): Observable<any> {
-    return this.paginationObs$
-    .pipe(
+  private get initWordPaginateTable(): Observable<WordTableRow[]> {
+    return this.paginationObs$.pipe(
       switchMap(item => this.wordsTable$),
       filter(Boolean),
-      map((table: [{}]) => {
+      map((table: WordTableRow[]) => {
         return table.slice(
           (this.currentPage - 1) * this.pageSize,
-          (this.currentPage) * this.pageSize);
-      }));
+          this.currentPage * this.pageSize,
+        );
+      }),
+    );
   }
 
   private get initWordTable(): Observable<any> {
-    return this.store.select('words')
-    .pipe(
-      pluck('model'),
-      switchMap(value => this.searchObs$.pipe(
-        debounceTime(500),
-        map((item: string) => this.wordFilter.transform(value, 'word', item)),
-      )));
+    return this.store
+      .select('words')
+      .pipe(
+        pluck('model'),
+        switchMap(value =>
+          this.searchObs$.pipe(
+            debounceTime(500),
+            map((item: string) =>
+              this.wordFilter.transform(value, 'word', item),
+            ),
+          ),
+        ),
+      );
   }
 
   private setTotalItems(): void {
-    this.wordsTable$
-    .pipe(map((item: [{}]) => item.length))
-    .subscribe(numberOfItems => this.totalItems = numberOfItems);
+    this.subscription = this.wordsTable$
+      .pipe(
+        map((item: any) => item.length),
+      )
+      .subscribe(numberOfItems => this.totalItems = numberOfItems);
   }
 }

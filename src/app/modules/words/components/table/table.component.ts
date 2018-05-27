@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs/Rx';
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
+import { WordTablePaginated } from './../../interfaces/wordTablePaginated.interface';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -9,24 +11,25 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 })
 export class TableComponent {
 
-  @Input() wordsTablePaginated$: Observable<any>;
+  @Input() wordsTablePaginated$: Observable<WordTablePaginated>;
   @Output() translateAction: EventEmitter<any> = new EventEmitter();
   @Output() deleteAction: EventEmitter<any> = new EventEmitter();
   @Output() changedAction: EventEmitter<any> = new EventEmitter();
 
-  public isEdit: any = false;
+  public isEdit: number | boolean = false;
 
   constructor() {}
 
-  public translate(wordIdData: string, wordData: string) {
-    const objectToSend = {
-      wordId: wordIdData,
-      word: wordData,
-    };
-    this.translateAction.emit(objectToSend);
+  public translate(wordIdData: string, wordData: string): void {
+    this.translateAction.emit(
+      {
+        wordId: wordIdData,
+        word: wordData,
+      },
+    );
   }
 
-  public delete(event) {
+  public delete(event: Event): void {
     this.deleteAction.emit(event);
   }
 
@@ -38,12 +41,12 @@ export class TableComponent {
     return this.isEdit === wordId;
   }
 
-  public changed(event) {
+  public changed(event: Event): void {
     this.isEdit = null;
     this.changedAction.emit(event);
   }
 
-  public trackByFn(index, item) {
+  public trackByFn(index: number, item): number {
     return item.id;
   }
 }

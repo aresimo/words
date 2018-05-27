@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 })
 export class FilterComponent implements OnInit {
 
-  @Output() filterString: EventEmitter<any> = new EventEmitter();
+  @Output() filterString: EventEmitter<string> = new EventEmitter();
 
   public filterInput: FormControl;
 
@@ -24,7 +24,7 @@ export class FilterComponent implements OnInit {
     this.filterString.emit(this.filterInput.value);
   }
 
-  public filterInputHandler() {
+  public filterInputHandler(): void {
     this.filterString.emit(this.filterInput.value);
   }
 }
