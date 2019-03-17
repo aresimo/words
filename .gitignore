@@ -51,3 +51,6 @@ src/environments/environment.stag.ts
 
 # editor files
 .vscode
+
+# angular doc
+.angulardoc.json
