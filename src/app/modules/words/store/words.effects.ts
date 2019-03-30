@@ -1,11 +1,8 @@
+import { of } from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { switchMap } from 'rxjs/operators/switchMap';
-import { map } from 'rxjs/operators/map';
-import { catchError } from 'rxjs/operators/catchError';
+import { switchMap,  map,  catchError } from 'rxjs/operators';
 
 import { TranslateApiService } from './../../../services/translate-api.service';
 import { WordsApiService } from './../../../services/words-api.service';

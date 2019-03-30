@@ -1,20 +1,18 @@
+// tslint:disable-next-line: import-blacklist
+import { throwError as _throw } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse,
-  HttpErrorResponse,
 } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Rx';
-import { catchError } from 'rxjs/operators/catchError';
-import { _throw } from 'rxjs/observable/throw';
+import { catchError } from 'rxjs/operators';
 
 import { AppState } from '../interfaces/appState.interface';
 import { SET_ERROR } from './../store/error.actions';
-import { ErrorData } from './../store/error.interfaces';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

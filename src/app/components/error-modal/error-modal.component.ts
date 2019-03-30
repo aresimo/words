@@ -1,6 +1,6 @@
-import { CLEAR_ERROR } from './../../store/error.actions';
+import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
+import { map } from 'rxjs/operators';
 import {
   Component,
   OnInit,
@@ -9,11 +9,11 @@ import {
   ViewEncapsulation,
   OnDestroy,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs/Subscription';
 
+import { CLEAR_ERROR } from './../../store/error.actions';
 import { AppState } from './../../interfaces/appState.interface';
 
 @Component({

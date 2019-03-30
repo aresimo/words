@@ -57,7 +57,6 @@
     "@angular/cli": "7.3.6",
     "@angular/compiler-cli": "7.2.9",
     "@angular/language-service": "7.2.9",
-    "@briisk/tslint-config": "^0.0.2",
     "@types/jasmine": "^2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^9.0.0",
