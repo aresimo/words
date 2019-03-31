@@ -1,7 +1,6 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable } from 'rxjs/Observable';
 import { hot, cold } from 'jasmine-marbles';
 
 import { TranslateApiService } from './../../../services/translate-api.service';
@@ -17,7 +16,7 @@ const mockTranslatePayload = {
 };
 
 const mockTranslateServiceResponse = {
-  text: [ 'zielony' ],
+  text: ['zielony'],
 };
 
 const mockWordToTranslate = {
@@ -72,7 +71,6 @@ describe('Words effects', () => {
   });
 
   describe('when getWord$ effect api response is with errors', () => {
-
     beforeEach(() => {
       responseWord.error('error message');
     });
@@ -92,7 +90,9 @@ describe('Words effects', () => {
   describe('when translateWord$ effect api response is without errors', () => {
     it('should return TranslateWordsSuccess with payload', () => {
       const action = new WordsActions.TranslateWord(mockWordToTranslate);
-      const completion = new WordsActions.TranslateWordSuccess(mockTranslatePayload);
+      const completion = new WordsActions.TranslateWordSuccess(
+        mockTranslatePayload,
+      );
 
       actions = hot('--a-', { a: action });
       const expected = cold('--b', { b: completion });
@@ -103,7 +103,6 @@ describe('Words effects', () => {
   });
 
   describe('when translateWord$ effect api response is with errors', () => {
-
     beforeEach(() => {
       responseTranslate.error('error message');
     });

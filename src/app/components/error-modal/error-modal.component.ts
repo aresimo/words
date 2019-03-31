@@ -1,5 +1,4 @@
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Subscription, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   Component,
@@ -44,7 +43,9 @@ export class ErrorModalComponent implements OnInit, OnDestroy {
   }
 
   private errorDataInit(): void {
-    this.errorData$ = this.store.select('error').pipe(map(state => state.error));
+    this.errorData$ = this.store
+      .select('error')
+      .pipe(map(state => state.error));
   }
 
   private isErrorInit(): void {

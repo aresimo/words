@@ -1,18 +1,14 @@
-import { CLEAR_ERROR } from './../../store/error.actions';
 import { By } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Rx';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   Component,
   ViewChild,
   NO_ERRORS_SCHEMA,
-  DebugElement,
   ViewContainerRef,
-  TemplateRef,
 } from '@angular/core';
-import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 import { ErrorModalComponent } from './error-modal.component';
 

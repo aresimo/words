@@ -1,6 +1,5 @@
 // tslint:disable-next-line: import-blacklist
-import { throwError as _throw } from 'rxjs';
-import { Observable } from 'rxjs/Observable';
+import { throwError as _throw, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,

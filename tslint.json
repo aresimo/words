@@ -1,22 +1,11 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
-  "extends": ["rxjs-tslint-rules", "tslint-consistent-codestyle"],
+  "rulesDirectory": ["node_modules/codelyzer"],
+  "extends": ["rxjs-tslint-rules"],
   "rules": {
-
     "prefer-const": true, // 2.1, 13.1
     "object-literal-shorthand": true, // 3.3, 3.4
-    "object-shorthand-properties-first": true, // 3.5
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ], // 3.6
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"
-    ], // 6.1
+    "object-literal-key-quotes": [true, "as-needed"], // 3.6
+    "quotemark": [true, "single", "jsx-double"], // 6.1
     "no-eval": true, // 6.4
     "space-before-function-paren": [
       true,
@@ -25,31 +14,14 @@
         "named": "never" // 18.3
       }
     ],
-    "align": [
-      true,
-      "arguments",
-      "parameters"
-    ], // 7.15
+    "align": [true, "arguments", "parameters"], // 7.15
     "arrow-parens": false,
     "no-duplicate-imports": true, // 10.4
-    "one-variable-per-declaration": [
-      true,
-      "ignore-for-loop"
-    ], // 13.2
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ], // 15.1
+    "one-variable-per-declaration": [true, "ignore-for-loop"], // 13.2
+    "triple-equals": [true, "allow-null-check"], // 15.1
     "no-boolean-literal-compare": true, // 15.3
-    "strict-boolean-expressions": true, // 15.3
-    "comment-format": [
-      true,
-      "check-space"
-    ], // 17.3
-    "indent": [
-      true,
-      "space"
-    ],
+    "comment-format": [true, "check-space"], // 17.3
+    "indent": [true, "spaces"],
     "whitespace": [
       true,
       "check-branch", // 18.3
@@ -58,10 +30,7 @@
       "check-preblock" // 18.2
     ],
     "eofline": true, // 18.5
-    "max-line-length": [
-      true,
-      120
-    ], // 18.12
+    "max-line-length": [true, 120], // 18.12
     "trailing-comma": [
       true,
       {
@@ -69,10 +38,7 @@
         "singleline": "never"
       }
     ], // 19.2
-    "semicolon": [
-      true,
-      "always"
-    ], // 20.1
+    "semicolon": [true, "always"], // 20.1
     "radix": true, // 21.3
     "no-construct": true, // 21.3, 21.6
     "variable-name": [
@@ -96,10 +62,7 @@
     "class-name": true,
     "curly": true,
     "forin": true,
-    "import-blacklist": [
-      true,
-      "rxjs"
-    ],
+    "import-blacklist": [false, "rxjs"],
     "import-spacing": true,
     "interface-over-type-literal": true,
     "label-position": true,
@@ -117,22 +80,12 @@
     ],
     "no-arg": true,
     "no-bitwise": true,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-debugger": true,
     "no-duplicate-super": true,
     "no-empty": false,
     "no-empty-interface": true,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
+    "no-inferrable-types": [true, "ignore-params"],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
@@ -161,18 +114,8 @@
         "variable-declaration": "nospace"
       }
     ],
-    "directive-selector": [
-      true,
-      "attribute",
-      ["app", "counter"],
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      ["app", "counter"],
-      "kebab-case"
-    ],
+    "directive-selector": [true, "attribute", ["app", "counter"], "camelCase"],
+    "component-selector": [true, "element", ["app", "counter"], "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -183,8 +126,10 @@
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "no-access-missing-member": false,
-    "strict-boolean-expressions": [true, "allow-undefined-union", "allow-null-union"],
-    "rxjs-add": { "severity": "error" },
-    "rxjs-no-unused-add": { "severity": "error" }
+    "strict-boolean-expressions": [
+      true,
+      "allow-undefined-union",
+      "allow-null-union"
+    ]
   }
 }

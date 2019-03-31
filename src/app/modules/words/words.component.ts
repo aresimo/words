@@ -1,4 +1,3 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {
   Component,
   OnInit,
@@ -6,9 +5,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Subject, Subscription, Observable, BehaviorSubject} from 'rxjs';
 import { switchMap, map, filter, pluck, debounceTime } from 'rxjs/operators';
 
 import { WordFilterPipe } from './../../pipes/word-filter.pipe';
