@@ -110,7 +110,7 @@ describe('WordsComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should be created', (): void => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 

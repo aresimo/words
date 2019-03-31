@@ -29,7 +29,7 @@ describe('WordsApiService', () => {
     httpMock.verify();
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(service).toBeTruthy();
   });
 

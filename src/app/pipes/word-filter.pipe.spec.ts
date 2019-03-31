@@ -32,7 +32,7 @@ const filterResultMock = [
 ];
 
 describe('WordFilterPipe', () => {
-  it('should create an instance', () => {
+  it('should create', () => {
     const pipe = new WordFilterPipe();
     expect(pipe).toBeTruthy();
   });
