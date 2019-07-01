@@ -10,7 +10,6 @@ import * as WordsActions from './words.actions';
 
 @Injectable()
 export class WordsEffects {
-  private wordId: string;
 
   @Effect()
   getWord$: Observable<WordsAction> = this.actions$
@@ -18,6 +17,13 @@ export class WordsEffects {
     .pipe(
       switchMap(() =>
         this.wordsApiService.word().pipe(
+          map((wordObject: {id: number, word: string}) => {
+            const randomId: string = Math.random().toString(36).substr(2, 6);
+            return {
+              id: (wordObject.id === 0) ? randomId : wordObject.id,
+              word: wordObject.word,
+            };
+          }),
           map(data => new WordsActions.GetWordSuccess(data)),
           catchError(error => of(new WordsActions.GetWordError(error))),
         ),
