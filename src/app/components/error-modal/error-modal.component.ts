@@ -22,7 +22,7 @@ import { AppState } from './../../interfaces/appState.interface';
   styleUrls: ['./error-modal.component.scss'],
 })
 export class ErrorModalComponent implements OnInit, OnDestroy {
-  @ViewChild('template') public templateRef: TemplateRef<any>;
+  @ViewChild('template', { static: true }) public templateRef: TemplateRef<any>;
 
   public modalRef: BsModalRef;
   public isError: Subscription;

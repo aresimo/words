@@ -38,10 +38,10 @@ const mockStore = {
   template: `<app-error-modal></app-error-modal>`,
 })
 class TestHostComponent {
-  @ViewChild(ErrorModalComponent)
+  @ViewChild(ErrorModalComponent, /* TODO: add static flag */ <any>{})
   public errorModalComponent: ErrorModalComponent;
 
-  @ViewChild(ErrorModalComponent, { read: ViewContainerRef })
+  @ViewChild(ErrorModalComponent, /* TODO: add static flag */ <any>{ read: ViewContainerRef })
   vcr: ViewContainerRef;
 
   constructor(public view: ViewContainerRef) {}

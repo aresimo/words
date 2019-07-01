@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
@@ -12,11 +11,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'words',
-    loadChildren: 'app/modules/words/words.module#WordsModule',
+    loadChildren: () => import('app/modules/words/words.module').then(m => m.WordsModule),
   },
   {
     path: 'config',
-    loadChildren: 'app/modules/config/config.module#ConfigModule',
+    loadChildren: () => import('app/modules/config/config.module').then(m => m.ConfigModule),
   },
   {
     path: '404',

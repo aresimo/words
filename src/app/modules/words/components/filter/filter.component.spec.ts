@@ -14,7 +14,7 @@ describe('FilterComponent', () => {
     template: `<app-filter (filterString)="getOutput($event)"></app-filter>`,
   })
   class TestHostComponent {
-    @ViewChild(FilterComponent)
+    @ViewChild(FilterComponent, /* TODO: add static flag */ <any>{})
     public filterComponent: FilterComponent;
     public filterStringOutput = 'none';
 

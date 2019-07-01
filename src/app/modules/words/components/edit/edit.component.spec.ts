@@ -18,7 +18,7 @@ describe('EditComponent', () => {
       ></app-edit>`,
   })
   class TestHostComponent {
-    @ViewChild(EditComponent)
+    @ViewChild(EditComponent, /* TODO: add static flag */ <any>{})
     public editComponent: EditComponent;
     public outputValue: any;
     public isEdit: any = 123;

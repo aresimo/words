@@ -14,7 +14,7 @@ export class EditComponent implements OnInit, OnChanges {
   @Input() wordId = null;
   @Input() isEdit = false;
   @Output() changedWordValue: EventEmitter<any> = new EventEmitter<any>(true);
-  @ViewChild('word') wordInputElement: ElementRef;
+  @ViewChild('word', { static: false }) wordInputElement: ElementRef;
 
   public wordInput: FormControl;
 
