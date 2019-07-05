@@ -13,7 +13,7 @@ const wordsTableInputMock = [
 const wordsTableEmptyInputMock = [-1];
 
 const epxectedTranslate = {
-  wordId: 2652741,
+  id: 2652741,
   word: 'thickos',
 };
 

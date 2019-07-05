@@ -17,14 +17,13 @@ export class WordsEffects {
     .pipe(
       switchMap(() =>
         this.wordsApiService.word().pipe(
-          map((wordObject: {id: number, word: string}) => {
-            const randomId: string = Math.random().toString(36).substr(2, 6);
+          map(wordObject => {
             return {
-              id: (wordObject.id === 0) ? randomId : wordObject.id,
+              id: wordObject.id,
               word: wordObject.word,
             };
           }),
-          map(data => new WordsActions.GetWordSuccess(data)),
+          map((data: any) => new WordsActions.GetWordSuccess(data)),
           catchError(error => of(new WordsActions.GetWordError(error))),
         ),
       ),
@@ -39,7 +38,7 @@ export class WordsEffects {
           .translate(action.payload.word, 'en-pl', 0)
           .pipe(
             map(response => ({
-              id: action.payload.wordId,
+              id: action.payload.id,
               translation: response.text[0],
             })),
           )

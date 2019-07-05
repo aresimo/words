@@ -8,10 +8,10 @@ import { WordsApiService } from './../../../services/words-api.service';
 import { WordsEffects } from './words.effects';
 import * as WordsActions from './words.actions';
 
-const mockWordPayload = { id: 98798, word: 'Shift' };
+const mockWordPayload = { id: '98798', word: 'Shift' };
 
 const mockTranslatePayload = {
-  id: 123123,
+  id: '123123',
   translation: 'zielony',
 };
 
@@ -20,7 +20,7 @@ const mockTranslateServiceResponse = {
 };
 
 const mockWordToTranslate = {
-  wordId: 123123,
+  id: '123123',
   word: 'green',
 };
 

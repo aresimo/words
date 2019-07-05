@@ -1,6 +1,4 @@
-import { ActionReducer, Action } from '@ngrx/store';
-
-import { WordState, WordsAction } from './words.interfaces';
+import { WordState, Word } from './words.interfaces';
 import * as wordsActions from './words.actions';
 
 const initialState: WordState = {
@@ -10,8 +8,10 @@ const initialState: WordState = {
   model: [],
 };
 
-export function wordsReducer(state = initialState, action: wordsActions.WordsActions): WordState {
-
+export function wordsReducer(
+  state = initialState,
+  action: wordsActions.WordsActions,
+): WordState {
   switch (action.type) {
     case wordsActions.GET_WORD: {
       return {
@@ -23,11 +23,23 @@ export function wordsReducer(state = initialState, action: wordsActions.WordsAct
     }
 
     case wordsActions.GET_WORD_SUCCESS: {
+      const randomId: string =
+        action.payload.id.toString() === '0'
+          ? Math.random()
+              .toString(36)
+              .substr(2, 6)
+          : action.payload.id;
+
+      const wordPayload = {
+        id: randomId,
+        word: action.payload.word,
+      };
+
       return {
         isPending: false,
         isSuccess: true,
         isError: false,
-        model: [ action.payload, ...state.model ],
+        model: [wordPayload, ...state.model],
       };
     }
 
@@ -45,12 +57,12 @@ export function wordsReducer(state = initialState, action: wordsActions.WordsAct
         isPending: false,
         isError: false,
         isSuccess: false,
-        model: state.model.filter(item => item.id !== action.payload),
+        model: state.model.filter((item: Word) => item.id !== action.payload),
       };
     }
 
     case wordsActions.EDIT_WORD: {
-      const newModel = state.model.map((item) => {
+      const newModel = state.model.map((item: Word) => {
         return item.id === action.payload.id
           ? { ...item, word: action.payload.word, translation: '' }
           : item;
@@ -83,16 +95,17 @@ export function wordsReducer(state = initialState, action: wordsActions.WordsAct
     }
 
     case wordsActions.TRANSLATE_WORD_SUCCESS: {
-      const newModel = state.model.map((item) => {
+      const wordTranslatePayload = state.model.map((item: Word) => {
         return item.id === action.payload.id
           ? { ...item, translation: action.payload.translation }
           : item;
       });
+
       return {
         isPending: false,
         isError: false,
         isSuccess: true,
-        model: newModel,
+        model: wordTranslatePayload,
       };
     }
 

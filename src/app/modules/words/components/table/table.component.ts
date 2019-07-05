@@ -23,7 +23,7 @@ export class TableComponent {
   public translate(wordIdData: string, wordData: string): void {
     this.translateAction.emit(
       {
-        wordId: wordIdData,
+        id: wordIdData,
         word: wordData,
       },
     );

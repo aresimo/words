@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
 
+import { Word } from './words.interfaces';
+
 export const GET_WORD = '[Words] Get word';
 export const GET_WORD_SUCCESS = '[Words] Get word success';
 export const GET_WORD_ERROR = '[Words] Get word error';
@@ -17,7 +19,7 @@ export class GetWord implements Action {
 export class GetWordSuccess implements Action {
   readonly type = GET_WORD_SUCCESS;
 
-  constructor(public payload: any) {}
+  constructor(public payload: Word) {}
 }
 
 export class GetWordError implements Action {
@@ -29,13 +31,13 @@ export class GetWordError implements Action {
 export class DeleteWord implements Action {
   readonly type = DELETE_WORD;
 
-  constructor(public payload: any) {}
+  constructor(public payload: string) {}
 }
 
 export class EditWord implements Action {
   readonly type = EDIT_WORD;
 
-  constructor(public payload: any) {}
+  constructor(public payload: Word) {}
 }
 
 export class ClearData implements Action {
@@ -45,7 +47,7 @@ export class ClearData implements Action {
 export class TranslateWord implements Action {
   readonly type = TRANSLATE_WORD;
 
-  constructor(public payload: any) {}
+  constructor(public payload: Word) {}
 }
 
 export class TranslateWordError implements Action {
@@ -57,7 +59,7 @@ export class TranslateWordError implements Action {
 export class TranslateWordSuccess implements Action {
   readonly type = TRANSLATE_WORD_SUCCESS;
 
-  constructor(public payload: any) {}
+  constructor(public payload: Word) {}
 }
 
 export type WordsActions =

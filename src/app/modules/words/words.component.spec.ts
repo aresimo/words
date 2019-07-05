@@ -54,18 +54,13 @@ const mockStore = {
 };
 
 const translateEventMock = {
-  wordId: 1212,
+  id: 1212,
   word: 'lorem',
 };
 
 const translateExpected = {
   type: '[Words] Translate word',
-  payload: { wordId: 1212, word: 'lorem' },
-};
-
-const wordChangedEventMock = {
-  word: '',
-  id: 1212,
+  payload: { id: 1212, word: 'lorem' },
 };
 
 const deleteExpected = {

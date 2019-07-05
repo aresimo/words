@@ -70,7 +70,7 @@ export class WordsComponent implements OnInit, OnDestroy {
   }
 
   public translate(event: any): void {
-    const wordToTranslate = { wordId: event.wordId, word: event.word };
+    const wordToTranslate = { id: event.id, word: event.word };
     this.store.dispatch({ type: TRANSLATE_WORD, payload: wordToTranslate });
   }
 

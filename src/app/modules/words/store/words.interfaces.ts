@@ -7,7 +7,7 @@ export interface WordsAction extends Action {
 export interface Word {
   word?: string;
   translation?: string;
-  id: number;
+  id: string;
 }
 
 export interface WordState {
