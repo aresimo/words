@@ -144,9 +144,10 @@ describe('WordsComponent', () => {
     expect(component.currentPage).toEqual(2);
   });
 
-  it('should init wordsTablePaginated$ stream with data', (): void => {
+  it('should init wordsTablePaginated$ stream with data', (done: DoneFn) => {
     component.wordsTablePaginated$.subscribe((item) => {
-      expect(item).toBe(expectedData);
+      expect(item).toEqual(expectedData);
+      done();
     });
   });
 });
